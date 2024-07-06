@@ -155,14 +155,14 @@ func checkDangerousSource(sources []string, directive string, response *HeaderRe
 							response.Status = Warning
 						}
 						response.ConsoleMessages = append(response.ConsoleMessages, utils.Colorize("Content-Security-Policy", "yellow", true)+" possible dangerous source in "+utils.Colorize(directive+": ", "", true)+"Make sure that "+utils.Colorize(source, "blue", true)+" is not hosting JSONP endpoints")
-						response.Messages = append(response.Messages, "Possible dangerous source in "+directive+": "+source+" is hosting JSONP endpoints.")
+						response.Messages = append(response.Messages, "Possible dangerous source in "+directive+": Make sure that "+source+" is not hosting JSONP endpoints.")
 					}
 				} else if nonHttpUrlPattern.MatchString(source) {
 					if response.Status != Error {
 						response.Status = Warning
 					}
 					response.ConsoleMessages = append(response.ConsoleMessages, utils.Colorize("Content-Security-Policy", "yellow", true)+" possible dangerous source in "+utils.Colorize(directive+": ", "", true)+"Make sure that "+utils.Colorize(source, "blue", true)+" is not hosting JSONP endpoints")
-					response.Messages = append(response.Messages, "Possible dangerous source in "+directive+": "+source+" is hosting JSONP endpoints.")
+					response.Messages = append(response.Messages, "Possible dangerous source in "+directive+": Make sure that "+source+" is not hosting JSONP endpoints.")
 				}
 			}
 		}
